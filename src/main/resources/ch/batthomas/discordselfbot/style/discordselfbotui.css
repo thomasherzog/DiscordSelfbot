@@ -1,0 +1,126 @@
+.sidebar {
+    -fx-background-color: #2f3136;
+}
+
+.mainpane {
+    -fx-background-color: #36393e;
+}
+
+.leftappbar {
+    -fx-background-color: #2f3136;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 0.0, 25.0, 0.0,  1.0);
+}
+
+.rightappbar {
+    -fx-background-color: #36393e;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 0.0, 25.0, 0.0,  1.0);
+}
+
+.sidebarbutton {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.sidebarbutton:hover {
+    -fx-background-color: rgba(255,255,255,0.1);
+}
+
+.sidebarbuttonactive {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-text-fill: white;
+}
+
+.sidebarbuttonactive:hover {
+    -fx-background-color: rgba(255,255,255,0.3);
+}
+
+.title {
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-font-weight: 700;
+}
+
+.pagetitle {
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-font-weight: 700;
+}
+
+.normaltext {
+    -fx-text-fill: #acaeb2;
+    -fx-font-size: 13;
+    -fx-font-weight: 700;
+}
+
+.password-field {
+    -fx-background-color: #303237;
+    -fx-text-fill: white;
+    -fx-border-color: #202225;
+    -fx-border-radius: 3 3 3 3;
+}
+
+.combo-box {
+    -fx-background-color: #303237;
+    -fx-text-fill: white;
+    -fx-border-color: #202225;
+    -fx-border-radius: 3 3 3 3;
+}
+
+.combo-box-base .text {
+    -fx-fill: #ffffff;
+}
+
+.combo-box .arrow-button  {
+    -fx-color: #72767d;
+}
+
+.combo-box:hover .arrow-button {
+    -fx-color: #ffffff;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #2a2d31;
+    -fx-text-fill: white;
+    -fx-border-color: #202225;
+    -fx-border-radius: 3 3 3 3;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #303237;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #2b2d32;
+}
+
+.text-field:focused {
+    -fx-border-color: #7289da;
+}
+
+.materialbutton {
+    -fx-background-color: #7289da;
+    -fx-text-fill: white;
+}
+
+.materialbutton:hover {
+    -fx-background-color: #677bc4;
+    -fx-text-fill: white;
+}
+
+.materialbutton:pressed {
+    -fx-background-color: #5b6eae;
+    -fx-text-fill: white;
+}
+
+.statusrunning {
+    -fx-text-fill: white;
+}
+
+.statusoffline {
+    -fx-text-fill: #f04747;
+}

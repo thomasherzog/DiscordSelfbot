@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.batthomas.discordselfbot.controller.DiscordSelfbotUIController">
+    <stylesheets>
+        <URL value="@/ch/batthomas/discordselfbot/style/discordselfbotui.css" />
+    </stylesheets>
+    <children>
+        <AnchorPane fx:id="sidebarContainer" layoutX="-6.0" layoutY="44.0" prefHeight="356.0" prefWidth="200.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="45.0" />
+        <AnchorPane fx:id="mainPane" layoutX="93.0" prefHeight="400.0" prefWidth="507.0" styleClass="mainpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+      <AnchorPane fx:id="leftAppBar" prefHeight="45.0" prefWidth="200.0" styleClass="leftappbar" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="rightAppBar" layoutX="155.0" layoutY="-80.0" prefHeight="45.0" prefWidth="425.0" styleClass="rightappbar" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    </children>
+</AnchorPane>

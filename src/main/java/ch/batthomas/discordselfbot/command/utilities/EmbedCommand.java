@@ -1,5 +1,8 @@
-package ch.batthomas.discordselfbot.command;
+package ch.batthomas.discordselfbot.command.utilities;
 
+import ch.batthomas.discordselfbot.command.Command;
+import ch.batthomas.discordselfbot.command.CommandCategory;
+import ch.batthomas.discordselfbot.command.CommandManager;
 import java.time.LocalDate;
 import java.util.Arrays;
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -12,7 +15,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class EmbedCommand extends Command {
 
     public EmbedCommand(CommandManager cmd) {
-        super(cmd, "Embed",
+        super(cmd, "Embed", CommandCategory.UTILITIES,
                 "-title", "-titleurl", "-color", "-author", "-authoricon", "-authorurl",
                 "-image", "-description", "-footer", "-footericon", "-thumbnail", "-timestamp");
     }

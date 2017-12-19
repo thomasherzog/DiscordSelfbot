@@ -1,5 +1,8 @@
 package ch.batthomas.discordselfbot.controller;
 
+import ch.batthomas.discordselfbot.command.CommandManager;
+import ch.batthomas.discordselfbot.controls.LogPage;
+import ch.batthomas.discordselfbot.controls.ModulesPage;
 import ch.batthomas.discordselfbot.controls.OverviewPage;
 import ch.batthomas.discordselfbot.controls.SettingsPage;
 import ch.batthomas.discordselfbot.controls.Sidebar;
@@ -37,40 +40,41 @@ public class DiscordSelfbotUIController implements Initializable {
     private Map<String, Node> pages;
 
     private JDA jda;
-
-    private OverviewPage overview;
-    private SettingsPage settings;
+    private CommandManager cmd;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        pages = new HashMap<>();
-        initSidebar();
-        initTitle();
-        initPages();
-        changePage("Overview");
-
+        try {
+            pages = new HashMap<>();
+            initSidebar();
+            initTitle();
+            initPages();
+            changePage("Overview");
+        } catch (IOException ex) {
+            Logger.getLogger(DiscordSelfbotUIController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void startBot() {
         try {
-            jda = new JDABuilder(AccountType.CLIENT).setToken(settings.getToken()).buildAsync();
-            MessageReceivedListener msg = new MessageReceivedListener(settings.getPrefix().get(), settings.getLanguage().get());
+            jda = new JDABuilder(AccountType.CLIENT).setToken(((SettingsPage) pages.get("Settings")).getToken()).buildAsync();
+            MessageReceivedListener msg = new MessageReceivedListener(cmd);
             jda.addEventListener(msg);
-            settings.getLanguage().addListener((observable, oldValue, newValue) -> {
+            ((SettingsPage) pages.get("Settings")).getLanguage().addListener((observable, oldValue, newValue) -> {
                 msg.setLanguage(newValue);
             });
-            settings.getPrefix().addListener((observable, oldValue, newValue) -> {
+            ((SettingsPage) pages.get("Settings")).getPrefix().addListener((observable, oldValue, newValue) -> {
                 msg.setPrefix(newValue);
             });
-            overview.setStatus(OverviewPage.Status.RUNNING);
+            ((OverviewPage) pages.get("Overview")).setStatus(OverviewPage.Status.RUNNING);
         } catch (IOException ex) {
             Logger.getLogger(DiscordSelfbotUIController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LoginException ex) {
-            overview.setStatus(OverviewPage.Status.LOGINEXCEPTION);
+            ((OverviewPage) pages.get("Overview")).setStatus(OverviewPage.Status.LOGINEXCEPTION);
         } catch (IllegalArgumentException ex) {
-            overview.setStatus(OverviewPage.Status.INVALIDTOKEN);
+            ((OverviewPage) pages.get("Overview")).setStatus(OverviewPage.Status.INVALIDTOKEN);
         } catch (RateLimitedException ex) {
-            overview.setStatus(OverviewPage.Status.RATELIMITEXCEPTION);
+            ((OverviewPage) pages.get("Overview")).setStatus(OverviewPage.Status.RATELIMITEXCEPTION);
         }
         mainPane.getScene().getWindow().setOnCloseRequest((event) -> {
             if (jda != null) {
@@ -84,7 +88,7 @@ public class DiscordSelfbotUIController implements Initializable {
         if (jda != null) {
             jda.shutdown();
         }
-        overview.setStatus(OverviewPage.Status.OFFLINE);
+        ((OverviewPage) pages.get("Overview")).setStatus(OverviewPage.Status.OFFLINE);
     }
 
     private void changePage(String page) {
@@ -92,11 +96,12 @@ public class DiscordSelfbotUIController implements Initializable {
         mainPane.getChildren().add(pages.get(page));
     }
 
-    private void initPages() {
-        overview = new OverviewPage(this);
-        pages.put("Overview", overview);
-        settings = new SettingsPage();
-        pages.put("Settings", settings);
+    private void initPages() throws IOException {
+        pages.put("Overview", new OverviewPage(this));
+        pages.put("Settings", new SettingsPage());
+        pages.put("Log", new LogPage());
+        cmd = new CommandManager(((SettingsPage) pages.get("Settings")).getPrefix().get(), ((SettingsPage) pages.get("Settings")).getLanguage().get());
+        pages.put("Modules", new ModulesPage(cmd));
     }
 
     private void initTitle() {
@@ -119,6 +124,16 @@ public class DiscordSelfbotUIController implements Initializable {
         sidebar.addEntry("Overview", (event) -> {
             sidebar.focusButton("Overview");
             changePage("Overview");
+        });
+        
+        sidebar.addEntry("Modules", (event) -> {
+            sidebar.focusButton("Modules");
+            changePage("Modules");
+        });
+        
+        sidebar.addEntry("Log", (event) -> {
+            sidebar.focusButton("Log");
+            changePage("Log");
         });
 
         sidebar.addEntry("Settings", (event) -> {

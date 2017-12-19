@@ -17,8 +17,8 @@ public class MessageReceivedListener extends ListenerAdapter {
 
     private final CommandManager cmd;
 
-    public MessageReceivedListener(String prefix, String language) throws IOException {
-        cmd = new CommandManager(prefix, language);
+    public MessageReceivedListener(CommandManager cmd) throws IOException {
+        this.cmd = cmd;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class MessageReceivedListener extends ListenerAdapter {
         Message message = event.getMessage();
 
         if (user.equals(event.getJDA().getSelfUser())) {
-            if (message.getRawContent().startsWith(cmd.getPrefix())) {
-                String[] parts = message.getRawContent().split(" ");
+            if (message.getContentRaw().startsWith(cmd.getPrefix())) {
+                String[] parts = message.getContentRaw().split(" ");
                 Command command = cmd.getCommand(parts[0].replaceFirst(cmd.getPrefix(), ""));
                 if (command != null) {
                     command.execute(event, Arrays.copyOfRange(parts, 1, parts.length));

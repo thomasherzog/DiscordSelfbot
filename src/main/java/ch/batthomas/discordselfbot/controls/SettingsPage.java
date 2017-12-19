@@ -63,7 +63,7 @@ public class SettingsPage extends VBox {
         VBox.setMargin(prefixLabel, new Insets(0,0,3,0));
         
         ObservableList<String> prefixes = FXCollections.observableArrayList();
-        prefixes.addAll(">", ".", "/", "-", "<", ":", "\\");
+        prefixes.addAll(">", ".", "/", ":", "?", "!");
         prefixChooser = new ComboBox(prefixes);
         prefixChooser.getSelectionModel().select(">");
         prefixChooser.setPrefHeight(30);

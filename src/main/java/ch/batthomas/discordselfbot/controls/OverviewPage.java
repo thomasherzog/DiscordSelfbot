@@ -2,6 +2,7 @@ package ch.batthomas.discordselfbot.controls;
 
 import ch.batthomas.discordselfbot.DiscordSelfbot;
 import ch.batthomas.discordselfbot.controller.DiscordSelfbotUIController;
+import java.time.LocalDateTime;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -73,19 +74,24 @@ public class OverviewPage extends VBox {
             statusLabel.setText("The Selfbot is running");
             statusImage.setImage(new Image(DiscordSelfbot.class.getResourceAsStream("image/bot_on.png")));
             toggleStatus.setText("Stop the Selfbot");
+            System.out.println("[" + LocalDateTime.now() + "] The bot is running");
         } else {
             switch (status) {
                 case LOGINEXCEPTION:
                     statusLabel.setText("LoginException : Please provide a valid token");
+                    System.out.println("[" + LocalDateTime.now() + "] Please provide a valid token");
                     break;
                 case RATELIMITEXCEPTION:
                     statusLabel.setText("RateLimitException : You've exceeded the rate limit");
+                    System.out.println("[" + LocalDateTime.now() + "] You've exceeded the rate limit");
                     break;
                 case INVALIDTOKEN:
                     statusLabel.setText("Invalid token : Please provide a valid token");
+                    System.out.println("[" + LocalDateTime.now() + "] Please provide a valid token");
                     break;
                 default:
                     statusLabel.setText("The Selfbot is offline");
+                    System.out.println("[" + LocalDateTime.now() + "] The bot is offline");
                     break;
             }
             toggleStatus.setText("Start the Selfbot");

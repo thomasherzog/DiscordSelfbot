@@ -13,13 +13,15 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public abstract class Command {
 
     protected final String name;
+    protected final CommandCategory category;
     protected final String[] availableArgs;
     protected Map<String, String> arguments;
 
     protected final CommandManager cmd;
 
-    public Command(CommandManager cmd, String name, String... availableArgs) {
+    public Command(CommandManager cmd, String name, CommandCategory category, String... availableArgs) {
         this.name = name;
+        this.category = category;
         this.availableArgs = availableArgs;
         this.cmd = cmd;
     }
@@ -74,6 +76,10 @@ public abstract class Command {
         return cmd.getPrefix() + name;
     }
 
+    public CommandCategory getCategory() {
+        return category;
+    }
+    
     public String getDescription() {
         return cmd.getI18N().getMessage(name.toLowerCase() + "desc");
     }

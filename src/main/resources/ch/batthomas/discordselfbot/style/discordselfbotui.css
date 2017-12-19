@@ -30,12 +30,12 @@
 .sidebarbuttonactive {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
-    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-color: #7289da;
     -fx-text-fill: white;
 }
 
 .sidebarbuttonactive:hover {
-    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-color: #7289da;
 }
 
 .title {
@@ -61,6 +61,36 @@
     -fx-text-fill: white;
     -fx-border-color: #202225;
     -fx-border-radius: 3 3 3 3;
+}
+
+.password-field:focused {
+    -fx-border-color: #7289da;
+}
+
+.text-area {
+     -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-color: #202225;
+    -fx-focus-color: transparent;
+    -fx-background-color: #303237;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+
+.text-area .content {
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-background-color: #303237;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+
+.text-area:focused {
+    -fx-border-color: #7289da;
 }
 
 .combo-box {
@@ -98,10 +128,6 @@
     -fx-background-color: #2b2d32;
 }
 
-.text-field:focused {
-    -fx-border-color: #7289da;
-}
-
 .materialbutton {
     -fx-background-color: #7289da;
     -fx-text-fill: white;
@@ -123,4 +149,21 @@
 
 .statusoffline {
     -fx-text-fill: #f04747;
+}
+
+.toggle-switch .thumb {
+    -fx-background-color: #ffffff;
+}
+
+.toggle-switch .thumb-area {
+    -fx-background-color: #72767d;
+    -fx-background-insets: -3;
+}
+
+.toggle-switch:selected .thumb-area {
+    -fx-background-color: #7289da;
+}
+
+.separator {
+    -fx-fill: #4f545c;
 }

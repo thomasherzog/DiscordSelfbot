@@ -1,11 +1,11 @@
-[![GitHub issues](https://img.shields.io/github/issues/batthomas/DiscordSelfbot.svg)](https://github.com/batthomas/DiscordSelfbot/issues)
-[![GitHub forks](https://img.shields.io/github/forks/batthomas/DiscordSelfbot.svg)](https://github.com/batthomas/DiscordSelfbot/network)
-[![GitHub stars](https://img.shields.io/github/stars/batthomas/DiscordSelfbot.svg)](https://github.com/batthomas/DiscordSelfbot/stargazers)
-[![GitHub license](https://img.shields.io/github/license/batthomas/DiscordSelfbot.svg)](https://github.com/batthomas/DiscordSelfbot/blob/master/LICENSE)
-
 # Discord Selfbot
 
 DiscordSelfbot is a easy to use selfbot for Discord, written in Java using JavaFX and JDA. The main goal of this project is to make selfbots so easy that everyone can use it. It has no installation and a very simple GUI.
 
 ## Requirements
 * Java 8
+
+## Status
+This project has been discontinued because Discord doesn't allow selfbots anymore. You can find the source below.
+* [Discord developer guidelines](https://discordapp.com/developers/docs/topics/oauth2#bot-vs-user-accounts)
+* [Discord support answer](https://support.discordapp.com/hc/en-us/articles/115002192352-Automated-user-accounts-self-bots-)
